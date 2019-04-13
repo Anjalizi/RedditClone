@@ -5,8 +5,14 @@
 <br><br>
 {% endif %}
 
-<form method="POST" action="{% url 'login' %}">
+<!-- all instructions given in signup.html -->
+<form method="POST" action="{% url 'accounts:login' %}">
 	{% csrf_token %}
+
+ 	{% if request.GET.next %}
+ 	<input type="hidden" name="next" value={{ request.GET.next }}>
+ 	{% endif %}
+
 	Username: <br>
 	<input type="text" name="username">
 	<br> Password: <br>

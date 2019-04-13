@@ -5,8 +5,9 @@
 <br><br>
 {% endif %}
 
+<!-- url format is '<app_name>:<url_name>' url_name is given with url regex -->
 <!-- in form action 'signup' is the name of the url we go to on submit (specified in urls.py)  -->
-<form method="POST" action="{% url 'signup' %}">
+<form method="POST" action="{% url 'accounts:signup' %}">
 	{% csrf_token %}
 	Username: <br>
 	<input type="text" name="username">
