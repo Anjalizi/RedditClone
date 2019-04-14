@@ -24,7 +24,8 @@ def create(request):
 		return render(request, 'posts/create.html')
 
 def home(request):
-	posts = Post.objects.order_by('votes_total')
+	# for decreasing order put '-' sign
+	posts = Post.objects.order_by('-votes_total')
 	return render(request, 'posts/home.html', {'posts':posts})
 
 def upvote(request, pk):

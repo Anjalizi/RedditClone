@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
+from django.contrib.auth import logout
 
 def signup(request):
 	if request.method=='POST':
@@ -29,8 +30,14 @@ def login_view(request):
 			# since it is not a permanent field in the form, created only when there is 'next'
 			if 'next' in request.POST:
 				return redirect(request.POST['next'])
-			return render(request, 'accounts/login.html', {'error' : 'Logged in Successfully'})
+			return redirect('home')
 		else:
 			return render(request, 'accounts/login.html', {'error' : "Account does not exist OR Username and Password didn't match"})
 	else:
 		return render(request, 'accounts/login.html')
+
+def logout_view(request):
+	if request.method == 'POST':
+		logout(request)
+		return redirect('home')
+

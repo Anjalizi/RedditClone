@@ -10,6 +10,8 @@ class Post(models.Model):
 
 	def __str__(self):
 		return self.title
+
+	# can customize appearance of any field pretty/different using functions
 		
 
 		
